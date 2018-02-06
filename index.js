@@ -67,13 +67,14 @@ var IssuesList = React.createClass({
                 if (issue.state == 'closed'){
                     className = 'panel-success'
                     updateOrCloseDate = 'resolved: '+updateDate.toLocaleString();
-                } else if (issue.lables.name == 'degraded performance'){
-                    className = 'panel-warning'
-                } else if (issue.lables.name == 'investigating'){
-                    className = 'panel-info'
-                } else if (issue.lables.name == 'maintenance'){
-                    className = 'panel-primary'
                 }
+                // } else if (issue.lables.name == 'degraded performance'){
+                //     className = 'panel-warning'
+                // } else if (issue.lables.name == 'investigating'){
+                //     className = 'panel-info'
+                // } else if (issue.lables.name == 'maintenance'){
+                //     className = 'panel-primary'
+                // }
                 return e('div',{key : 'issueItems',className: 'panel '+className,key : issue.id},[
                     e('div',{key: 'heading',className : 'panel-heading'},
                         e('h3',{className : 'panel-title', key : 'title'},
