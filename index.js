@@ -4,15 +4,15 @@
 var apis = {
     apis : {
         title: 'Platform APIs (mobile and web)',
-        url: 'https://app.streamloan.io' //replace this with your own API endpoints
+        url: 'https://app.streamloan.io/' //replace this with your own API endpoints
     },
     website: {
         title: 'StreamLoan Website',
-        url: 'https://streamloan.io' //replace this with your own API endpoints
+        url: 'https://streamloan.io/' //replace this with your own API endpoints
     },
     webapp: {
         title: 'StreamLoan Web Application',
-        url: 'https://webapp.streamloan.io' //replace this with your own API endpoints
+        url: 'https://webapp.streamloan.io/' //replace this with your own API endpoints
     }
 };
 
