@@ -47,14 +47,14 @@ var markDownParser = function(str){
 var IssuesList = React.createClass({
 
     render : function(){
-        var issueItems = e('p',{className : 'alert alert-info',key : 'info'},'Please wait, loading status information from Github...')
+        var issueItems = e('p',{className : 'alert alert-info',key : 'info'},'Please wait, loading status information...')
         if (this.props.error)
             issueItems = e('p',{className : 'alert alert-danger',key : 'error'},this.props.error)
         else if (this.props.issues !== undefined){
             issueItems = this.props.issues.map(function(issue){
                 var found = false;
                 issue.labels.map(function(label){
-                    if (label.name == 'incident')
+                    if (label.name == 'incident' || label.name == 'degraded performance' ||label.name == 'investigating' || label.name == 'maintenance')
                         found = true;
                 })
                 if (!found)
@@ -67,6 +67,12 @@ var IssuesList = React.createClass({
                 if (issue.state == 'closed'){
                     className = 'panel-success'
                     updateOrCloseDate = 'resolved: '+updateDate.toLocaleString();
+                } else if (lable.name == 'degraded performance'){
+                    className = 'panel-warning'
+                } else if (lable.name == 'investigating'){
+                    className = 'panel-info'
+                } else if (lable.name == 'maintenance'){
+                    className = 'panel-primary'
                 }
                 return e('div',{key : 'issueItems',className: 'panel '+className,key : issue.id},[
                     e('div',{key: 'heading',className : 'panel-heading'},
@@ -80,7 +86,7 @@ var IssuesList = React.createClass({
                                     e('span',{key : 'updateDate',className: 'pull-right'},
                                         updateOrCloseDate)]),
                         e('hr',{className: 'hr'}),
-                        markDownParser(issue.body),
+                        markDownParser(issue.body)
                         ]
                         )
                     ])
@@ -97,7 +103,7 @@ var IssuesList = React.createClass({
                                                 (this.props.refreshing ? ' fa-spin' : '')}))
                                     ]),
             e('p',{key : 'link'},[]),
-            issueItems,
+            issueItems
             ])
 
     }
@@ -162,7 +168,7 @@ var StatusList = React.createClass({
             error : function(){
                 //we add a timeout to give some UI feedback on the loading even if it is instantaneous
                 setTimeout(function(){this.setState({refreshing : false})}.bind(this),200)
-                this.setState({error : 'Cannot load incidents from Github, sorry.'})}.bind(this)
+                this.setState({error : 'Trouble loading incidents, sorry.'})}.bind(this)
         })
     },
 
