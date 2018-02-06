@@ -81,8 +81,6 @@ var IssuesList = React.createClass({
                                         updateOrCloseDate)]),
                         e('hr',{className: 'hr'}),
                         markDownParser(issue.body),
-                        e('p',null,e('a',{key : 'github-link',href : issue.html_url},
-                            'discuss on Github ('+issue.comments + ' comments so far)'))
                         ]
                         )
                     ])
@@ -98,11 +96,7 @@ var IssuesList = React.createClass({
                                             e('i',{className : 'fa fa-refresh'+
                                                 (this.props.refreshing ? ' fa-spin' : '')}))
                                     ]),
-            e('p',{key : 'link'},[
-                e('a',{'href' : issuesHtmlUrl},'see all on Github'),
-                ' // ',
-                e('a',{'href' : newIssueUrl},'report an incident')
-                ]),
+            e('p',{key : 'link'},[]),
             issueItems,
             ])
 
@@ -208,7 +202,6 @@ var StatusList = React.createClass({
             e('h2',{},'Reachability of APIs'),
             e('p',{},'Please note: This only reflects the reachability of our APIs from your computer.'),
             e('ul',{key : 'statuses',className : 'list-group'},items),
-            e('a',{'href' : newIssueUrl},'report an incident')
             ];
         return e('div',null,
             [
