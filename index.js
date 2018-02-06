@@ -67,11 +67,11 @@ var IssuesList = React.createClass({
                 if (issue.state == 'closed'){
                     className = 'panel-success'
                     updateOrCloseDate = 'resolved: '+updateDate.toLocaleString();
-                } else if (lable.name == 'degraded performance'){
+                } else if (issue.lables.name == 'degraded performance'){
                     className = 'panel-warning'
-                } else if (lable.name == 'investigating'){
+                } else if (issue.lables.name == 'investigating'){
                     className = 'panel-info'
-                } else if (lable.name == 'maintenance'){
+                } else if (issue.lables.name == 'maintenance'){
                     className = 'panel-primary'
                 }
                 return e('div',{key : 'issueItems',className: 'panel '+className,key : issue.id},[
