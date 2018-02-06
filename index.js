@@ -2,9 +2,17 @@
 //Please make sure that those endpoints allow crossdomain calls, or be sure
 //to host this site in the same domain as your API (and set `document.domain` correspondingly)
 var apis = {
-    github : {
-        title: 'Github Public API (not our own but we couldnt live without it)',
-        url: 'https://api.github.com/users' //replace this with your own API endpoints
+    apis : {
+        title: 'Platform APIs (mobile and web)',
+        url: 'https://app.streamloan.io' //replace this with your own API endpoints
+    },
+    website: {
+        title: 'StreamLoan Website',
+        url: 'https://streamloan.io' //replace this with your own API endpoints
+    },
+    webapp: {
+        title: 'StreamLoan Web Application',
+        url: 'https://webapp.streamloan.io' //replace this with your own API endpoints
     }
 };
 
