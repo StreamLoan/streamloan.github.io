@@ -179,46 +179,46 @@ var StatusList = React.createClass({
         }
     },
 
-    // render : function(){
-    //     var apiStatuses;
-    //     var items = Object.keys(apis).map(function(key){
-    //         var site = apis[key]
-    //         var statusBadge;
-    //         var makeBadge = function(color,icon,text){
-    //             return e('span',{className: 'badge '+color,key:'badge'},
-    //                 [e('i',{className : 'fa '+icon}),' ',e('span',null,text)])
-    //         }
-    //         if (this.state[key] === undefined)
-    //             statusBadge = makeBadge('grey','fa-spin fa-refresh',' waiting for response')
-    //         else if (this.state[key] && this.state[key] == 'success')
-    //             statusBadge = makeBadge('green','fa-check','everything seems okay')
-    //         else
-    //             statusBadge = makeBadge('red','fa-times','an error occurred')
-    //         return e('li',{className : 'list-group-item',key : key},
-    //             [,
-    //              e('span',{key : 'title'},site.title),
-    //              ' ',
-    //              e('span',{key : 'url-info','className' : 'fa fa-dot-circle-o','title' : site.url},null),
-    //              statusBadge
-    //             ]
-    //             )
-    //     }.bind(this));
-    //     if (items.length)
-    //         apiStatuses = [
-    //         e('hr',{key : 'hr'}),
-    //         e('h2',{},'Reachability of APIs'),
-    //         e('p',{},'Please note: This only reflects the reachability of our APIs from your computer.'),
-    //         e('ul',{key : 'statuses',className : 'list-group'},items),
-    //         ];
-    //     return e('div',null,
-    //         [
-    //         e(IssuesList,{key : 'issues',issues : this.state.issues,
-    //                       refreshing : this.state.refreshing,
-    //                       error : this.state.error,
-    //                       refreshIssues : this.refreshIssues}),
-    //         apiStatuses
-    //         ])
-    // }
+    render : function(){
+        var apiStatuses;
+        var items = Object.keys(apis).map(function(key){
+            var site = apis[key]
+            var statusBadge;
+            var makeBadge = function(color,icon,text){
+                return e('span',{className: 'badge '+color,key:'badge'},
+                    [e('i',{className : 'fa '+icon}),' ',e('span',null,text)])
+            }
+            if (this.state[key] === undefined)
+                statusBadge = makeBadge('grey','fa-spin fa-refresh',' waiting for response')
+            else if (this.state[key] && this.state[key] == 'success')
+                statusBadge = makeBadge('green','fa-check','everything seems okay')
+            else
+                statusBadge = makeBadge('red','fa-times','an error occurred')
+            return e('li',{className : 'list-group-item',key : key},
+                [,
+                 e('span',{key : 'title'},site.title),
+                 ' ',
+                 e('span',{key : 'url-info','className' : 'fa fa-dot-circle-o','title' : site.url},null),
+                 statusBadge
+                ]
+                )
+        }.bind(this));
+        if (items.length)
+            apiStatuses = [
+            e('hr',{key : 'hr'}),
+            e('h2',{},'Reachability of APIs'),
+            e('p',{},'Please note: This only reflects the reachability of our APIs from your computer.'),
+            e('ul',{key : 'statuses',className : 'list-group'},items),
+            ];
+        return e('div',null,
+            [
+            e(IssuesList,{key : 'issues',issues : this.state.issues,
+                          refreshing : this.state.refreshing,
+                          error : this.state.error,
+                          refreshIssues : this.refreshIssues}),
+            apiStatuses
+            ])
+    }
 
 })
 
