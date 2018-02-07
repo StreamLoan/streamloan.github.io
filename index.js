@@ -53,9 +53,21 @@ var IssuesList = React.createClass({
         else if (this.props.issues !== undefined){
             issueItems = this.props.issues.map(function(issue){
                 var found = false;
+                var className = 'panel-danger';
                 issue.labels.map(function(label){
-                    if (label.name == 'incident' || label.name == 'degraded performance' ||label.name == 'investigating' || label.name == 'maintenance')
+                    if (label.name == 'incident' ){
+                        className = 'panel-alert'
                         found = true;
+                    } else if (label.name == 'maintenance') {
+                        className = 'panel-primary'
+                        found = true;
+                    } else if (label.name == 'investigating') {
+                        className = 'panel-info'
+                        found = true;
+                    } else if (label.name == 'degraded performance') {
+                        className = 'panel-warning'
+                        found = true;
+                    }
                 })
                 if (!found)
                     return;
@@ -63,18 +75,13 @@ var IssuesList = React.createClass({
                 var updateDate = new Date(issue.updated_at);
                 var closeDate = new Date(issue.closed_at);
                 var updateOrCloseDate = 'updated: '+updateDate.toLocaleString()
-                var className = 'panel-danger';
                 if (issue.state == 'closed'){
                     className = 'panel-success'
                     updateOrCloseDate = 'resolved: '+updateDate.toLocaleString();
                 }
-                // } else if (issue.lables.name == 'degraded performance'){
-                //     className = 'panel-warning'
-                // } else if (issue.lables.name == 'investigating'){
-                //     className = 'panel-info'
-                // } else if (issue.lables.name == 'maintenance'){
-                //     className = 'panel-primary'
-                // }
+                 else if (issue.lables == 'maintenance'){
+                    className = 'panel-primary'
+                }
                 return e('div',{key : 'issueItems',className: 'panel '+className,key : issue.id},[
                     e('div',{key: 'heading',className : 'panel-heading'},
                         e('h3',{className : 'panel-title', key : 'title'},
