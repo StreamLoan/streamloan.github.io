@@ -1,7 +1,6 @@
 
 body{
     font-family: Open Sans, Helvetica, Sans Serif;
-    padding-top:20px;
 }
 
 .green{
@@ -30,4 +29,25 @@ h2 a{
 footer{
     margin-top:20px;
     margin-bottom:20px;
+}
+.navbar-brand {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    background-color: #3498db;
+    height: 75px;
+}
+.navbar-brand>img  {
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+}
+.navbar-toggle {
+    z-index:3;
+}
+body{
+    padding-top: 0px;
 }
